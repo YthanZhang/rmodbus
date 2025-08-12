@@ -181,7 +181,11 @@ use tinyvec::{ArrayVec, Array};
 #[cfg(feature = "tinyvec")]
 impl<T: Clone, A: Array<Item=T>> VectorTrait<T> for ArrayVec<A> {
     fn push(&mut self, value: T) -> Result<(), ErrorKind> {
-        self.try_push(value).map_or(Err(ErrorKind::OOB), |_| Ok(()))
+        if self.try_push(value).is_some() {
+            Err(ErrorKind::OOB)
+        } else {
+            Ok(())
+        }
     }
 
     fn extend(&mut self, other: &[T]) -> Result<(), ErrorKind> {
