@@ -1,7 +1,7 @@
 use crate::ErrorKind;
 
 #[allow(clippy::module_name_repetitions)]
-pub trait VectorTrait<T: Copy> {
+pub trait VectorTrait<T: Clone> {
     fn push(&mut self, value: T) -> Result<(), ErrorKind>;
     fn extend(&mut self, other: &[T]) -> Result<(), ErrorKind>;
     fn len(&self) -> usize;
@@ -170,6 +170,70 @@ impl<T: Copy, const N: usize> VectorTrait<T> for HeaplessVec<T, N> {
         HeaplessVec::resize(self, new_len, value).map_err(|()| ErrorKind::OOB)
     }
     #[inline]
+    fn replace(&mut self, index: usize, value: T) {
+        self[index] = value;
+    }
+}
+
+#[cfg(feature = "tinyvec")]
+use tinyvec::{ArrayVec, Array};
+
+#[cfg(feature = "tinyvec")]
+impl<T: Clone, A: Array<Item=T>> VectorTrait<T> for ArrayVec<A> {
+    fn push(&mut self, value: T) -> Result<(), ErrorKind> {
+        self.try_push(value).map_or(Err(ErrorKind::OOB), |_| Ok(()))
+    }
+
+    fn extend(&mut self, other: &[T]) -> Result<(), ErrorKind> {
+        let available = self.capacity() - self.len();
+        if other.len() > available {
+            return Err(ErrorKind::OOB);
+        }
+
+        let _ = self.fill(other.into_iter().cloned());
+
+        Ok(())
+    }
+
+    fn len(&self) -> usize {
+        ArrayVec::len(self)
+    }
+
+    fn is_empty(&self) -> bool {
+        ArrayVec::is_empty(self)
+    }
+
+    fn clear(&mut self) {
+        ArrayVec::clear(self);
+    }
+
+    fn cut_end(&mut self, len_to_cut: usize, value: T) {
+        let len = self.len();
+        if len_to_cut >= len {
+            self.clear();
+        } else {
+            self.resize(len - len_to_cut, value);
+        }
+    }
+
+    fn as_slice(&self) -> &[T] {
+        ArrayVec::as_slice(self)
+    }
+
+    fn as_mut_slice(&mut self) -> &mut [T] {
+        ArrayVec::as_mut_slice(self)
+    }
+
+    fn resize(&mut self, new_len: usize, value: T) -> Result<(), ErrorKind> {
+        if new_len > self.capacity() {
+            return Err(ErrorKind::OOB);
+        }
+
+        ArrayVec::resize(self, new_len, value);
+
+        Ok(())
+    }
+
     fn replace(&mut self, index: usize, value: T) {
         self[index] = value;
     }
