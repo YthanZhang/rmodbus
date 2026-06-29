@@ -343,7 +343,14 @@ impl ModbusRequest {
             }
         };
         let unit_id = buf[frame_start];
-        if unit_id != self.unit_id {
+
+        #[cfg(not(feature = "wildcard_address"))]
+        let address_mismatch = unit_id != self.unit_id;
+
+        #[cfg(feature = "wildcard_address")]
+        let address_mismatch = unit_id != self.unit_id && self.unit_id != 0xFF;
+
+        if address_mismatch{
             return Err(ErrorKind::FrameBroken);
         }
 
