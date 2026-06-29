@@ -6,8 +6,9 @@
   <component name="CargoProjects">
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml">
       <package file="$PROJECT_DIR$">
-        <enabledFeature name="default" />
-        <enabledFeature name="tinyvec" />
+        <feature name="default" enabled="true" />
+        <feature name="tinyvec" enabled="true" />
+        <feature name="wildcard_address" enabled="true" />
       </package>
     </cargoProject>
   </component>
@@ -20,12 +21,115 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="RsBuildProfile:test" />
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="38" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="RsBuildProfile:dev" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "YthanZhang"
+  }
+}]]></component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="dev" />
+                    <option name="lastUsedInstant" value="1782700842" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1782700841" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/YthanZhang/rmodbus.git",
+    "accountId": "e435995d-663d-4cd8-8214-c6fa5217cf03"
+  }
+}]]></component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="qjT744WE" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0000000019181967" />
+      <entry key="S10" value="1.00004677780721" />
+      <entry key="S30" value="1.049900425668319" />
+      <entry key="S60" value="1.3568938254230662" />
+      <entry key="M2" value="2.843343702847849" />
+      <entry key="M5" value="11.332827272003088" />
+      <entry key="M10" value="24.21312530121851" />
+      <entry key="M15" value="32.47106611989014" />
+      <entry key="M30" value="44.43274514328717" />
+      <entry key="H1" value="52.36141447297202" />
+      <entry key="H2" value="56.94375184750055" />
+      <entry key="H4" value="59.409445143173734" />
+      <entry key="D1" value="61.55928427479571" />
+      <entry key="W1" value="61.936817437510555" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="1.7404133018578253E-147" />
+      <entry key="S5" value="1.9782226973629117E-59" />
+      <entry key="S10" value="4.474075928591858E-30" />
+      <entry key="S30" value="2.087892590527482E-10" />
+      <entry key="S60" value="2.456939353848758E-5" />
+      <entry key="M2" value="0.010204531844132088" />
+      <entry key="M5" value="0.411373674647948" />
+      <entry key="M10" value="1.429541916052772" />
+      <entry key="M15" value="2.16843402482991" />
+      <entry key="M30" value="3.291584957412589" />
+      <entry key="H1" value="4.056481532118255" />
+      <entry key="H2" value="4.5035011142111125" />
+      <entry key="H4" value="4.74523552790931" />
+      <entry key="D1" value="4.95660492640396" />
+      <entry key="W1" value="4.9937774279429" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.04703896085659584" />
+      <entry key="MS500" value="0.5426146859409036" />
+      <entry key="S2" value="0.858267931888545" />
+      <entry key="S5" value="0.9406956920548805" />
+      <entry key="S10" value="0.9699379770401961" />
+      <entry key="S30" value="1.0374930820969537" />
+      <entry key="S60" value="1.3432854942044845" />
+      <entry key="M2" value="2.8388541236888716" />
+      <entry key="M5" value="11.730996909428399" />
+      <entry key="M10" value="25.630975905621057" />
+      <entry key="M15" value="34.629462263299224" />
+      <entry key="M30" value="47.71765088221247" />
+      <entry key="H1" value="56.41399743500799" />
+      <entry key="H2" value="61.44514087351908" />
+      <entry key="H4" value="64.1535806531342" />
+      <entry key="D1" value="66.51569945933109" />
+      <entry key="W1" value="66.93056759857087" />
+    </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -35,26 +139,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.rust.reset.selective.auto.import&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ythan/Documents/Rust/rmodbus&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
-    &quot;org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon&quot;: &quot;&quot;,
-    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.rust.reset.selective.auto.import": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Ythan/Documents/Rust/rmodbus",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
+    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
+    "org.rust.first.attach.projects": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Test rmodbus" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="buildProfileId" value="dev" />
@@ -86,6 +193,7 @@
       <option name="presentableId" value="Default" />
       <updated>1754978761269</updated>
       <workItem from="1754978762454" duration="6093000" />
+      <workItem from="1782699847192" duration="2645000" />
     </task>
     <servers />
   </component>

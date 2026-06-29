@@ -41,6 +41,9 @@ with_bincode = ["bincode"]
 alloc = []
 defmt = ["dep:defmt"]
 
+# Enable this to set device address 0xFF to wildcard address that will be interpreted as device's own address
+wildcard_address = []
+
 [dev-dependencies]
 rand = "0.7.3"
 crc16 = "0.4.0"

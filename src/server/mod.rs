@@ -551,13 +551,21 @@ impl<'a, V: VectorTrait<u8>> ModbusFrame<'a, V> {
             return Err(ErrorKind::FrameBroken);
         }
         let unit = self.buf[self.frame_start];
-        let broadcast_silent = unit == 0;
-        let broadcast_active = unit == 255;
 
-        if !(broadcast_silent || broadcast_active) && unit != self.unit_id {
+        #[cfg(not(feature = "wildcard_address"))]
+        let broadcast = unit == 0 || unit == 255;
+        #[cfg(not(feature = "wildcard_address"))]
+        let wildcard = false;
+
+        #[cfg(feature = "wildcard_address")]
+        let broadcast = unit == 0;
+        #[cfg(feature = "wildcard_address")]
+        let wildcard = unit == 255;
+
+        if !broadcast && !wildcard && unit != self.unit_id {
             return Ok(());
         }
-        if !(broadcast_silent || broadcast_active) && self.proto == ModbusProto::TcpUdp {
+        if !broadcast && self.proto == ModbusProto::TcpUdp {
             // copy 4 bytes: tr id and proto
             self.response.extend(&self.buf[0..4])?;
         }
@@ -605,7 +613,7 @@ impl<'a, V: VectorTrait<u8>> ModbusFrame<'a, V> {
             ModbusFunction::GetCoils | ModbusFunction::GetDiscretes => {
                 // funcs 1 - 2
                 // read coils / discretes
-                if broadcast_silent {
+                if broadcast {
                     return Ok(());
                 }
                 if self.buf.len() < self.frame_start + 6 {
@@ -633,7 +641,7 @@ impl<'a, V: VectorTrait<u8>> ModbusFrame<'a, V> {
             ModbusFunction::GetHoldings | ModbusFunction::GetInputs => {
                 // funcs 3 - 4
                 // read holdings / inputs
-                if broadcast_silent {
+                if broadcast {
                     return Ok(());
                 }
                 if self.buf.len() < self.frame_start + 6 {
@@ -667,7 +675,7 @@ impl<'a, V: VectorTrait<u8>> ModbusFrame<'a, V> {
                 if !check_frame_crc!(6) {
                     return Err(ErrorKind::FrameCRCError);
                 }
-                if !broadcast_silent {
+                if !broadcast {
                     self.response_required = true;
                 }
                 self.count = 1;
@@ -689,7 +697,7 @@ impl<'a, V: VectorTrait<u8>> ModbusFrame<'a, V> {
                 if !check_frame_crc!(7 + bytes) {
                     return Err(ErrorKind::FrameCRCError);
                 }
-                if !broadcast_silent {
+                if !broadcast {
                     self.response_required = true;
                 }
                 self.count = u16::from_be_bytes([
@@ -719,14 +727,6 @@ impl<'a, V: VectorTrait<u8>> ModbusFrame<'a, V> {
                     self.buf[self.frame_start + 4],
                     self.buf[self.frame_start + 5],
                 ]);
-                Ok(())
-            }
-            _ => {
-                // function unsupported
-                if !broadcast_silent {
-                    self.response_required = true;
-                    self.error = MODBUS_ERROR_ILLEGAL_FUNCTION;
-                }
                 Ok(())
             }
         }
